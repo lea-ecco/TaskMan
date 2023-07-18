@@ -1,8 +1,11 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-
+    id 'maven-publish'
 }
+
+group = 'com.github.lea_ecco'
+version = '1.0'
 
 android {
     namespace 'com.github.lea_ecco.taskman'
@@ -31,4 +34,17 @@ android {
 
 dependencies {
 
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.lea_ecco'
+                artifactId = 'taskman'
+                version = '1.0'
+            }
+        }
+    }
 }
